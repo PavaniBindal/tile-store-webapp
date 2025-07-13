@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order History</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- Mobile Toggle Button -->
+    <button class="mobile-toggle" id="mobileToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Dashboard Container -->
+    <div id="dashboardContainer" class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h4><i class="fas fa-th-large"></i> Tile Store</h4>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a
+              href="/order-history"
+              class="nav-link active"
+              data-page="orders"
+            >
+              <i class="fas fa-clipboard-list"></i> Order History
+            </a>
+          </li>
+          <li>
+            <a href="/inventory" class="nav-link" data-page="inventory">
+              <i class="fas fa-boxes"></i> Inventory
+            </a>
+          </li>
+          <li>
+            <a href="/customers" class="nav-link" data-page="customers">
+              <i class="fas fa-users"></i> Customer Details
+            </a>
+          </li>
+          <li>
+            <a href="#" id="logoutBtn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Orders Page -->
+        <div id="ordersPage" class="content-page active">
+          <div class="content-header">
+            <h1>Order History</h1>
+          </div>
+
+          <div class="controls-bar">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search by customer or slip number..."
+                    id="orderSearch"
+                  />
+                  <button class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="filter-buttons">
+                  <button class="btn btn-outline-success" id="deliveredFilter">
+                    <i class="fas fa-check"></i> Delivered Only
+                  </button>
+                  <button class="btn btn-outline-primary" id="paidFilter">
+                    <i class="fas fa-money-bill-wave"></i> Fully Paid Only
+                  </button>
+                  <button class="btn btn-outline-warning" id="pendingFilter">
+                    <i class="fas fa-clock"></i> Pending
+                  </button>
+                  <button class="btn btn-primary" id="addOrderBtn">
+                    <i class="fas fa-plus"></i> Add Order
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="data-table-container">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Slip No.</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Paid</th>
+                  <th>Balance</th>
+                  <th>Delivery Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <tr>
+                  <td>#001</td>
+                  <td>Rajesh Kumar</td>
+                  <td>2024-01-15</td>
+                  <td>₹25,000</td>
+                  <td>₹15,000</td>
+                  <td>₹10,000</td>
+                  <td>
+                    <span class="status-badge status-delivered">Delivered</span>
+                  </td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i> View
+                      </button>
+                      <button class="btn btn-secondary btn-sm">
+                        <i class="fas fa-print"></i> Print
+                      </button>
+                      <button class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#002</td>
+                  <td>Priya Sharma</td>
+                  <td>2024-01-16</td>
+                  <td>₹18,500</td>
+                  <td>₹18,500</td>
+                  <td>₹0</td>
+                  <td>
+                    <span class="status-badge status-pending">Pending</span>
+                  </td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i> View
+                      </button>
+                      <button class="btn btn-secondary btn-sm">
+                        <i class="fas fa-print"></i> Print
+                      </button>
+                      <button class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#003</td>
+                  <td>Amit Patel</td>
+                  <td>2024-01-17</td>
+                  <td>₹32,000</td>
+                  <td>₹20,000</td>
+                  <td>₹12,000</td>
+                  <td>
+                    <span class="status-badge status-delivered">Delivered</span>
+                  </td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i> View
+                      </button>
+                      <button class="btn btn-secondary btn-sm">
+                        <i class="fas fa-print"></i> Print
+                      </button>
+                      <button class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#004</td>
+                  <td>Sunita Gupta</td>
+                  <td>2024-01-18</td>
+                  <td>₹15,200</td>
+                  <td>₹5,000</td>
+                  <td>₹10,200</td>
+                  <td>
+                    <span class="status-badge status-pending">Pending</span>
+                  </td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i> View
+                      </button>
+                      <button class="btn btn-secondary btn-sm">
+                        <i class="fas fa-print"></i> Print
+                      </button>
+                      <button class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
